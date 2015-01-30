@@ -1,0 +1,3 @@
+var searchIndex = {};
+searchIndex['disjoint-set'] = {"items":[[0,"","disjoint-set",""],[1,"DisjointSet","","Struct that represents the [Disjoint-Set](http://en.wikipedia.org/wiki/Disjoint-set_data_structure) data structure."],[10,"clone","","",0],[10,"new","","",0],[10,"make_set","","Makes a singleton set of the value inside the `DisjointSet`.",0],[10,"find","","Finds the value of the root of the set that the value belongs to and performs path compression on the visited nodes.",0],[10,"union","","Unions the two sets that each value belongs to using union by rank.",0]],"paths":[[1,"DisjointSet"]]};
+initSearch(searchIndex);
