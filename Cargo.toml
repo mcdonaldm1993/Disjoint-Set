@@ -1,0 +1,5 @@
+[package]
+
+name = "disjoint-set"
+version = "0.0.1"
+authors = ["Michael McDonald <mcdonaldm1993@gmail.com>"]
