@@ -4,12 +4,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="rustdoc">
-    <meta name="description" content="Source to the Rust file `D:\Dropbox\Uni\4th_Year\Individual_Project\disjoint-set\src\lib.rs`.">
+    <meta name="description" content="Source to the Rust file `lib.rs`.">
     <meta name="keywords" content="rust, rustlang, rust-lang">
 
     <title>lib.rs.html -- source</title>
 
-    <link rel="stylesheet" type="text/css" href="../../main.css">
+    <link rel="stylesheet" type="text/css" href="../../../main.css">
 
     
     
@@ -153,10 +153,15 @@
 <span id="111">111</span>
 <span id="112">112</span>
 <span id="113">113</span>
+<span id="114">114</span>
+<span id="115">115</span>
+<span id="116">116</span>
+<span id="117">117</span>
 </pre><pre class='rust '>
+<span class='attribute'>#<span class='op'>!</span>[<span class='ident'>feature</span>(<span class='ident'>alloc</span>)]</span>
+
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>hash</span>::<span class='ident'>Hash</span>;
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>collections</span>::<span class='ident'>HashMap</span>;
-<span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>collections</span>::<span class='ident'>hash_map</span>::<span class='ident'>Hasher</span>;
 
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>cell</span>::<span class='ident'>RefCell</span>;
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>rc</span>::<span class='ident'>Rc</span>;
@@ -169,7 +174,7 @@
 }
 
 <span class='kw'>impl</span><span class='op'>&lt;</span><span class='ident'>T</span><span class='op'>&gt;</span> <span class='ident'>DisjointSet</span><span class='op'>&lt;</span><span class='ident'>T</span><span class='op'>&gt;</span>
-    <span class='kw'>where</span> <span class='ident'>T</span>: <span class='ident'>Eq</span> <span class='op'>+</span> <span class='ident'>PartialEq</span> <span class='op'>+</span> <span class='ident'>Hash</span><span class='op'>&lt;</span><span class='ident'>Hasher</span><span class='op'>&gt;</span> <span class='op'>+</span> <span class='ident'>Clone</span>
+    <span class='kw'>where</span> <span class='ident'>T</span>: <span class='ident'>Eq</span> <span class='op'>+</span> <span class='ident'>PartialEq</span> <span class='op'>+</span> <span class='ident'>Hash</span> <span class='op'>+</span> <span class='ident'>Clone</span>
 {
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>new</span>() <span class='op'>-&gt;</span> <span class='ident'>DisjointSet</span><span class='op'>&lt;</span><span class='ident'>T</span><span class='op'>&gt;</span> {
         <span class='ident'>DisjointSet</span> {
@@ -196,7 +201,9 @@
                 <span class='ident'>root</span> <span class='op'>=</span> <span class='ident'>n</span>.<span class='ident'>clone</span>();
                 <span class='kw'>while</span> <span class='ident'>root</span>.<span class='ident'>borrow</span>().<span class='ident'>parent</span>.<span class='ident'>is_some</span>() {
                     <span class='ident'>changed_nodes</span>.<span class='ident'>push</span>(<span class='ident'>root</span>.<span class='ident'>clone</span>());
-                    <span class='ident'>root</span> <span class='op'>=</span> <span class='ident'>root</span>.<span class='ident'>borrow</span>().<span class='ident'>parent</span>.<span class='ident'>as_ref</span>().<span class='ident'>unwrap</span>().<span class='ident'>clone</span>().<span class='ident'>upgrade</span>().<span class='ident'>unwrap</span>();
+                    <span class='kw'>let</span> <span class='ident'>root_clone</span> <span class='op'>=</span> <span class='ident'>root</span>.<span class='ident'>clone</span>();
+                    <span class='ident'>root</span> <span class='op'>=</span> <span class='ident'>root_clone</span>.<span class='ident'>borrow</span>().<span class='ident'>parent</span>.<span class='ident'>as_ref</span>().<span class='ident'>unwrap</span>().<span class='ident'>clone</span>().<span class='ident'>upgrade</span>().<span class='ident'>unwrap</span>();
+                    <span class='comment'>// root = root.clone().borrow().parent.as_ref().unwrap().clone().upgrade().unwrap();</span>
                 }
             }
         }
@@ -206,7 +213,8 @@
             <span class='ident'>changed_node</span>.<span class='ident'>borrow_mut</span>().<span class='ident'>parent</span> <span class='op'>=</span> <span class='prelude-val'>Some</span>(<span class='ident'>root</span>.<span class='ident'>clone</span>().<span class='ident'>downgrade</span>());
         }
         
-        <span class='prelude-val'>Some</span>(<span class='ident'>root</span>.<span class='ident'>borrow</span>().<span class='ident'>value</span>.<span class='ident'>clone</span>())
+        <span class='kw'>let</span> <span class='ident'>result</span> <span class='op'>=</span> <span class='ident'>root</span>.<span class='ident'>borrow</span>().<span class='ident'>value</span>.<span class='ident'>clone</span>();
+        <span class='prelude-val'>Some</span>(<span class='ident'>result</span>)
     }
     
     <span class='doccomment'>/// Unions the two sets that each value belongs to using union by rank.</span>
@@ -307,13 +315,13 @@
     
 
     <script>
-        window.rootPath = "../../";
+        window.rootPath = "../../../";
         window.currentCrate = "disjoint_set";
         window.playgroundUrl = "";
     </script>
-    <script src="../../jquery.js"></script>
-    <script src="../../main.js"></script>
+    <script src="../../../jquery.js"></script>
+    <script src="../../../main.js"></script>
     
-    <script async src="../../search-index.js"></script>
+    <script async src="../../../search-index.js"></script>
 </body>
 </html>

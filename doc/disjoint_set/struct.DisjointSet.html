@@ -26,7 +26,7 @@
 
     <section class="sidebar">
         
-        <p class='location'><a href='index.html'>disjoint_set</a></p><div class='block struct'><h2>Structs</h2><a class='struct current' href='struct.DisjointSet.html'>DisjointSet</a></div>
+        <p class='location'><a href='index.html'>disjoint_set</a></p><script>window.sidebarCurrent = {name: 'DisjointSet', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
     </section>
 
     <nav class="sub">
@@ -42,13 +42,12 @@
 
     <section id='main' class="content struct">
 <h1 class='fqn'><span class='in-band'>Struct <a href='index.html'>disjoint_set</a>::<wbr><a class='struct' href=''>DisjointSet</a><wbr></span><span class='out-of-band'><span id='render-detail'>
-            <a id="collapse-all" href="#">[-]
-            </a>&nbsp;<a id="expand-all" href="#">[+]</a>
-        </span><a id='src-10' href='../src/disjoint_set/lib.rs.html#11-13'>[src]</a></span></h1>
+            <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
+        </span><a id='src-9' href='../src/disjoint_set/lib.rs.html#12-14'>[src]</a></span></h1>
 <pre class='rust struct'>pub struct DisjointSet&lt;T&gt; {
     // some fields omitted
 }</pre><div class='docblock'><p>Struct that represents the <a href="http://en.wikipedia.org/wiki/Disjoint-set_data_structure">Disjoint-Set</a> data structure.</p>
-</div><h2 id='methods'>Methods</h2><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl&lt;T&gt; <a class='struct' href='../disjoint_set/struct.DisjointSet.html' title='disjoint_set::DisjointSet'>DisjointSet</a>&lt;T&gt; <span class='where'>where T: <a class='trait' href='http://doc.rust-lang.org/nightly/core/cmp/trait.Eq.html' title='core::cmp::Eq'>Eq</a> + <a class='trait' href='http://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html' title='core::cmp::PartialEq'>PartialEq</a> + <a class='trait' href='http://doc.rust-lang.org/nightly/core/hash/trait.Hash.html' title='core::hash::Hash'>Hash</a>&lt;<a class='struct' href='http://doc.rust-lang.org/nightly/std/collections/hash/map/struct.Hasher.html' title='std::collections::hash::map::Hasher'>Hasher</a>&gt; + <a class='trait' href='http://doc.rust-lang.org/nightly/core/clone/trait.Clone.html' title='core::clone::Clone'>Clone</a></span></code></h3><div class='impl-items'><h4 id='method.new' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.new' class='fnname'>new</a>() -&gt; <a class='struct' href='../disjoint_set/struct.DisjointSet.html' title='disjoint_set::DisjointSet'>DisjointSet</a>&lt;T&gt;</code></h4>
+</div><h2 id='methods'>Methods</h2><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl&lt;T&gt; <a class='struct' href='../disjoint_set/struct.DisjointSet.html' title='disjoint_set::DisjointSet'>DisjointSet</a>&lt;T&gt; <span class='where'>where T: <a class='trait' href='http://doc.rust-lang.org/nightly/core/cmp/trait.Eq.html' title='core::cmp::Eq'>Eq</a> + <a class='trait' href='http://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html' title='core::cmp::PartialEq'>PartialEq</a> + <a class='trait' href='http://doc.rust-lang.org/nightly/core/hash/trait.Hash.html' title='core::hash::Hash'>Hash</a> + <a class='trait' href='http://doc.rust-lang.org/nightly/core/clone/trait.Clone.html' title='core::clone::Clone'>Clone</a></span></code></h3><div class='impl-items'><h4 id='method.new' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.new' class='fnname'>new</a>() -&gt; <a class='struct' href='../disjoint_set/struct.DisjointSet.html' title='disjoint_set::DisjointSet'>DisjointSet</a>&lt;T&gt;</code></h4>
 <h4 id='method.make_set' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.make_set' class='fnname'>make_set</a>(&amp;mut self, value: T)</code></h4>
 <div class='docblock'><p>Makes a singleton set of the value inside the <code>DisjointSet</code>.</p>
 </div><h4 id='method.find' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.find' class='fnname'>find</a>(&amp;mut self, value: T) -&gt; <a class='enum' href='http://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;T&gt;</code></h4>

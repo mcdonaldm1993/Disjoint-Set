@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["DisjointSet","Struct that represents the Disjoint-Set data structure."]]});
