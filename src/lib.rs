@@ -1,6 +1,7 @@
+#![feature(alloc)]
+
 use std::hash::Hash;
 use std::collections::HashMap;
-use std::collections::hash_map::Hasher;
 
 use std::cell::RefCell;
 use std::rc::Rc;
@@ -13,7 +14,7 @@ pub struct DisjointSet<T> {
 }
 
 impl<T> DisjointSet<T>
-    where T: Eq + PartialEq + Hash<Hasher> + Clone
+    where T: Eq + PartialEq + Hash + Clone
 {
     pub fn new() -> DisjointSet<T> {
         DisjointSet {
@@ -40,7 +41,9 @@ impl<T> DisjointSet<T>
                 root = n.clone();
                 while root.borrow().parent.is_some() {
                     changed_nodes.push(root.clone());
-                    root = root.borrow().parent.as_ref().unwrap().clone().upgrade().unwrap();
+                    let root_clone = root.clone();
+                    root = root_clone.borrow().parent.as_ref().unwrap().clone().upgrade().unwrap();
+                    // root = root.clone().borrow().parent.as_ref().unwrap().clone().upgrade().unwrap();
                 }
             }
         }
@@ -50,7 +53,8 @@ impl<T> DisjointSet<T>
             changed_node.borrow_mut().parent = Some(root.clone().downgrade());
         }
         
-        Some(root.borrow().value.clone())
+        let result = root.borrow().value.clone();
+        Some(result)
     }
     
     /// Unions the two sets that each value belongs to using union by rank.
